@@ -5,15 +5,15 @@ import lombok.Data;
 @Data
 public class Student {
     private int id;
-    private String firstName;
     private String lastName;
+    private String firstName;
     private int age;
 
     private static int nextId = 0;
 
-    public Student(String firstName, String lastName, int age) {
-        this.firstName = firstName;
+    public Student(String lastName, String firstName, int age) {
         this.lastName = lastName;
+        this.firstName = firstName;
         this.age = age;
         this.id = ++nextId;
     }
