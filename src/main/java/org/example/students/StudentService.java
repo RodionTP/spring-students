@@ -22,13 +22,13 @@ public class StudentService {
 
     public void addStudent(String lastName, String firstName, int age) {
         Student student = new Student(lastName, firstName, age);
-         if (students.add(student)) {
-             eventPublisher.publishEvent(new StudentCreatedEvent(this, student));
-         }
+        if (students.add(student)) {
+            eventPublisher.publishEvent(new StudentCreatedEvent(this, student));
+        }
     }
 
     public void removeStudentById(int id) {
-        if (students.removeIf(student -> student.getId() == id)){
+        if (students.removeIf(student -> student.getId() == id)) {
             eventPublisher.publishEvent(new StudentDeletedEvent(this, id));
         }
     }

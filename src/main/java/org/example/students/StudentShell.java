@@ -8,8 +8,6 @@ import org.springframework.shell.standard.ShellMethod;
 import org.springframework.shell.standard.ShellMethodAvailability;
 import org.springframework.shell.standard.ShellOption;
 
-import java.text.MessageFormat;
-import java.util.Random;
 import java.util.Set;
 
 @ShellComponent
@@ -45,16 +43,6 @@ public class StudentShell {
     public String clearStudents() {
         studentService.clearStudents();
         return "База студентов очищена";
-    }
-
-    @ShellMethod(key = "i")
-    public String init(@ShellOption(value = "c") int count) {
-        for (int i = 0; i < count; ) {
-            studentService.addStudent("LastName_" + ++i,
-                    "FirstName_" + i,
-                    new Random().nextInt(15, 31));
-        }
-        return MessageFormat.format("Добавлено {0} студентов", count);
     }
 
     public Availability canRemoveStudent() {
