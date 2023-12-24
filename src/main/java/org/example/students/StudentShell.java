@@ -14,13 +14,11 @@ import java.util.Set;
 @ShellComponent
 public class StudentShell {
     private final StudentService studentService;
-    private final boolean createStudents;
-    private final int countStudentsToCreate;
 
     public StudentShell(StudentService studentService, Environment environment) {
         this.studentService = studentService;
-        this.createStudents = Boolean.parseBoolean(environment.getProperty("CREATE_STUDENTS"));
-        this.countStudentsToCreate = Integer.parseInt(environment.getProperty("COUNT_STUDENTS_CREATE", "0"));
+        boolean createStudents = Boolean.parseBoolean(environment.getProperty("CREATE_STUDENTS"));
+        int countStudentsToCreate = Integer.parseInt(environment.getProperty("COUNT_STUDENTS_CREATE", "0"));
         if (createStudents) {
             initializeStudents(countStudentsToCreate);
         }
